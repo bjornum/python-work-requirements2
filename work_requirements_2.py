@@ -9,11 +9,11 @@ task = input("Enter an Task Number: ")
 task = int(task)
 
 # Task 1 - File to List Converted
-## Flow: User writes a filename, without adding the extension behind it.
-## Then run the filename given, with one of the extensions added as "allowed" ones.
-## If finding one, simply open it as read only, strip the lines, and show it.
 if(task == 1):
     print("You have chosen: Task 1 - File to List Converted")
+    
+    ## Helper to see what one can type
+    print("test and example is two files that exists. ")
     
     ## Prompt the user for a filename without any extensions needed
     state_an_filename = input("Write a file name (do not add the extension behind it): ")
@@ -21,7 +21,7 @@ if(task == 1):
     ## A list of extensions that are allowed.
     possible_extensions = [".txt", ".csv", ".json", ".pdf"]
 
-    ## An variable to store the file if it is found.
+    ## Variable to store the file to read.
     file_to_read = None
 
     ## Checking if file exists,  and if so then the extension of file.
@@ -45,11 +45,7 @@ if(task == 1):
     else:
         print("Error: File not found.")
 
-
 # Task 2 - Task List Manager
-## Flow: User send the list and task written to the tasks file, as parameters.
-## It then based on the function, either adds or removes the task to the list.
-## Typing done simply ends the loop, completing the task
 if(task == 2):
     print("You have chosen: Task 2 - Task List Manager")
 
