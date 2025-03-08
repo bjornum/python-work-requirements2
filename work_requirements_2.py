@@ -102,3 +102,31 @@ if(task == 3):
 
     # Print the student_id
     print(f"Student ID: {my_student_details.student_id}")
+
+# Task 4 - Math Quiz with Exception Handling
+if(task == 4):
+    print("You have chosen: Task 4 - Math Quiz with Exception Handling")
+
+# Task 5 - Directory Lister
+if(task == 5):
+    print("You have chosen: Task 5 - Directory Lister")
+
+# Task 6 - JSON Settings Handler
+if(task == 6):
+    print("You have chosen: Task 6 - JSON Settings Handler")
+
+# Task 7 - Scoped Variables Experiment
+if(task == 7):
+    print("You have chosen: Task 7 - Scoped Variables Experiment")
+
+# Task 8 - Simple Calculator Module
+if(task == 8):
+    print("You have chosen: Task 8 - Simple Calculator Module")
+
+# Task 9 - File Filtering and Writing
+if(task == 9):
+    print("You have chosen: Task 9 - File Filtering and Writing")
+
+# Task 10 - Debugging Practice (Print and Try / Except)
+if(task == 10):
+    print("You have chosen: Task 10 - Debugging Practice (Print and Try / Except)")
