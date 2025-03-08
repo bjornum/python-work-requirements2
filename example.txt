@@ -1,0 +1,3 @@
+hello!
+Welcome to my example file!
+It is the example of an example!
