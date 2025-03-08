@@ -88,4 +88,17 @@ if(task == 2):
 
 # Task 3 - Simple Class and Inheritance
 if(task == 3):
-    print("Welcome to task numbah 3")
+    print("You have chosen: Task 3 - Simple Class and Inheritance")
+
+    ## Import of Person file with Class of Student
+    from person import Student
+
+    ## A default student - As stated in the task (Otherwise would create two inputs for this with age and name)
+    ## Passing these 3 parameters down to said file
+    my_student_details = Student("Bjorn", 38, "S12345")
+
+    # Call the greet method from the person.py file
+    my_student_details.greet()
+
+    # Print the student_id
+    print(f"Student ID: {my_student_details.student_id}")
