@@ -10,6 +10,10 @@ import os
 ## Used in task 4 - To generate random for the quiz
 import random
 
+# Used to access JSON Module
+## Used in task 6.
+import json
+
 # Easier navigation between tasks, simply write task number and that task will trigger
 task = input("Enter an Task Number: ")
 task = int(task)
@@ -168,6 +172,75 @@ if(task == 5):
 # Task 6 - JSON Settings Handler
 if(task == 6):
     print("You have chosen: Task 6 - JSON Settings Handler")
+
+    ## Placing the Settings json into an variable
+    SETTINGS_FILE = "settings.json"
+
+    ## Default settings in case it does not exist
+    default_settings = {
+        "theme": "dark",
+        "volume": 80
+    }
+
+    ## 1. Checking if the file exists or not.
+    ## json.dump makes it to json format from a dictionary.
+    ## indent 4, simply makes it so it breaks the line, and make it more readable.
+    if not os.path.exists(SETTINGS_FILE):
+        with open(SETTINGS_FILE, "w") as file:
+            json.dump(default_settings, file, indent=4)
+
+    try:
+        ## 2. Reading what is already on the file
+        ## json.load makes it from json to an dictionary.
+        with open(SETTINGS_FILE, "r") as file:
+            settings = json.load(file)
+    
+    ## File not found or in incorrect format. simply place the default settings in it.
+    except (json.JSONDecodeError, FileNotFoundError):
+        print("Error: Settings file is missing or corrupted. Resetting to defaults.")
+        settings = default_settings
+        with open(SETTINGS_FILE, "w") as file:
+            json.dump(settings, file, indent=4)
+
+    ## 3. File is there, so we print what values it currently have.
+    print("\nCurrent Settings:")
+    for key, value in settings.items():
+        print(f"- {key}: {value}")
+
+    ## 4. User then can decide which key to change
+    setting_to_change = input("\nWhich setting would you like to change? ").strip()
+
+    ## If key found in settings (read from the file), then ask user to add a new value to json key
+    if setting_to_change in settings:
+        new_value = input(f"Enter new value for {setting_to_change}: ").strip()
+
+        ## Convert value type based on existing data type
+        if isinstance(settings[setting_to_change], int):
+            try:
+                ## Convert input to integer if needed - the volume
+                new_value = int(new_value)
+
+            ## Error: Was expecting an number on volume
+            except ValueError:
+                print("Invalid input! Expected a number.")
+                exit()
+
+        # 5. Saving new changes to the dictionary.
+        settings[setting_to_change] = new_value
+
+        ## 6. Opens the settings.json file as writable.
+        ## Converts it from dictionary to json format and put it in, in a nicely format.
+        try:
+            with open(SETTINGS_FILE, "w") as file:
+                json.dump(settings, file, indent=4)
+            print("Settings updated successfully!")
+
+        except IOError:
+            print("Error: Could not write to settings file.")
+
+    else:
+        print("Invalid setting! Please choose a valid option.")
+        
 
 # Task 7 - Scoped Variables Experiment
 if(task == 7):
