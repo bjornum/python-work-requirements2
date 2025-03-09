@@ -1,10 +1,13 @@
 # Note: Alot of comments that may seem messy, but tried to explain my thought pattern through it.
 ## Can close each task, by clicking the number next to it :D
 
-# Used in task 1 to access the Operative System, finding the file to read
+# Access the Operative System
+## Used in task 1 - finding the file to read
+## Used in task 5 - Finding the directives in the user computer
 import os
 
-# Used in task 4 - To generate random numbers
+# Access the random module
+## Used in task 4 - To generate random for the quiz
 import random
 
 # Easier navigation between tasks, simply write task number and that task will trigger
@@ -133,6 +136,34 @@ if(task == 4):
 # Task 5 - Directory Lister
 if(task == 5):
     print("You have chosen: Task 5 - Directory Lister")
+
+    ## Hints as i found it hard to figure out what i could write and how.
+    print("Tip 1. Use / before the name of the directory.")
+    print("Tip 2. Can see part of the directory in the terminal, where you run this task.")
+
+    ## Asking the user to enter the path of the directory
+    directory_path = input("Please enter the directory path: ")
+
+    try:
+        ## Looking for all files and directories in the path given by the user
+        items = os.listdir(directory_path)
+        
+        ## Printing the items in a nicely way, each on a new line with a - in front
+        print("\nItems in the directory:")
+        for item in items:
+            print(f"- {item}")
+
+    ## Error: Directory not existing or not found.
+    except FileNotFoundError:
+        print("Error: The directory does not exist.")
+
+    ## Error: Cannot access the directory due to not being accessible (lack of permissions)
+    except PermissionError:
+        print("Error: Permission denied. Cannot access the directory.")
+
+    ## Error: If something else goes wrong, simply print the message
+    except Exception as error:
+        print(f"An error occurred: {error}")
 
 # Task 6 - JSON Settings Handler
 if(task == 6):
