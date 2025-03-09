@@ -263,10 +263,59 @@ if(task == 7):
     first_scoped_function()
     print(epic_variable)
 
-
 # Task 8 - Simple Calculator Module
 if(task == 8):
     print("You have chosen: Task 8 - Simple Calculator Module")
+    print("For this one you will test my awesome calculator functions!")
+
+    ## Imports the calculator.py file, with these 4 functionalities.
+    import calculator
+
+    
+
+    # Allowed Operations to make
+    allowed_operations = ['add', 'substract', 'multiply', 'divide']
+
+    try:
+        ## Ask user for an action and two numbers
+        number_one = int(input("Write a number: "))
+        operation = input("Write which action you wish to test out (add, substract, multiply or divide): ")
+
+        # Check if operation is valid
+        if operation not in allowed_operations:
+            print(f"Invalid operation! Please choose from: {', '.join(allowed_operations)}")
+
+        else:
+            ## Next number if operation was valid
+            number_two = int(input("Write another number: "))
+            
+            # To have the variable defined, and wont cause any error of it not being so later.
+            result = None
+
+            if(operation == 'add'):
+                result = calculator.add(number_one, number_two)
+
+            elif(operation == 'substract'):
+                result = calculator.substract(number_one, number_two)
+
+            elif(operation == 'multiply'):
+                result = calculator.multiply(number_one, number_two)
+
+            elif(operation == 'divide'):
+                ## This one is special, as one cannot divide by 0
+                try:
+                    result = calculator.divide(number_one, number_two)
+                except ZeroDivisionError as error:
+                    print(f"Error: {error}")
+           
+            ## Print the results only if result is got a value other than the default None
+            if result is not None:
+                print(f"Result: {result}")
+
+    # Triggers if user attempt to type something else than number
+    except ValueError:
+            print("Invalid input! Please enter numbers only.")
+
 
 # Task 9 - File Filtering and Writing
 if(task == 9):
