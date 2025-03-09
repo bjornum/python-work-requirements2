@@ -241,10 +241,28 @@ if(task == 6):
     else:
         print("Invalid setting! Please choose a valid option.")
         
-
 # Task 7 - Scoped Variables Experiment
 if(task == 7):
     print("You have chosen: Task 7 - Scoped Variables Experiment")
+
+    epic_variable = "I am declared first, outside any of the scopes! woop!"
+
+    ## First function with the first scoped variable inside
+    def first_scoped_function():
+        epic_variable = "First layer of scope, inside a function!"
+        print(epic_variable)
+
+        ## A function inside a function, with yet another scoped variable within.
+        def second_scoped_function():
+            epic_variable = "Scoped scoped. i am inside a function, inside a function!"
+            print(epic_variable)
+
+        second_scoped_function()
+
+    ## Trigger the first Function and display the variable afterward.
+    first_scoped_function()
+    print(epic_variable)
+
 
 # Task 8 - Simple Calculator Module
 if(task == 8):
