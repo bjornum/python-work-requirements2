@@ -1,8 +1,11 @@
 # Note: Alot of comments that may seem messy, but tried to explain my thought pattern through it.
 ## Can close each task, by clicking the number next to it :D
 
-# To be able to interact with the Operative System. (checking if file exists)
+# Used in task 1 to access the Operative System, finding the file to read
 import os
+
+# Used in task 4 - To generate random numbers
+import random
 
 # Easier navigation between tasks, simply write task number and that task will trigger
 task = input("Enter an Task Number: ")
@@ -14,7 +17,7 @@ if(task == 1):
     
     ## Helper to see what one can type
     print("test and example is two files that exists. ")
-    
+
     ## Prompt the user for a filename without any extensions needed
     state_an_filename = input("Write a file name (do not add the extension behind it): ")
 
@@ -102,6 +105,30 @@ if(task == 3):
 # Task 4 - Math Quiz with Exception Handling
 if(task == 4):
     print("You have chosen: Task 4 - Math Quiz with Exception Handling")
+
+    # Generate two random integers
+    number_one = random.randint(1, 100)
+    number_two = random.randint(1, 100)
+
+    ## The correct answer, adding number_one and number_two together
+    correct_answer = number_one + number_two
+
+    ## User need to answer the math question
+    user_input = input(f"What is {number_one} + {number_two}? ")
+
+    try:
+        ## Convertss the user answer to an integer
+        user_answer = int(user_input)
+
+        ## Checking if the answer is correct or not
+        if user_answer == correct_answer:
+            print("Correct! Well done.")
+        else:
+            print(f"Oops! The correct answer is {correct_answer}.")
+
+    # If user types a non integer
+    except ValueError:
+        print("Invalid input! Please enter a number.")
 
 # Task 5 - Directory Lister
 if(task == 5):
