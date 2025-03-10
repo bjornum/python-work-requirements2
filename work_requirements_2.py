@@ -2,16 +2,12 @@
 ## Can close each task, by clicking the number next to it :D
 
 # Access the Operative System
-## Used in task 1 - finding the file to read
-## Used in task 5 - Finding the directives in the user computer
 import os
 
 # Access the random module
-## Used in task 4 - To generate random for the quiz
 import random
 
 # Used to access JSON Module
-## Used in task 6.
 import json
 
 # Easier navigation between tasks, simply write task number and that task will trigger
@@ -368,3 +364,42 @@ if(task == 9):
 # Task 10 - Debugging Practice (Print and Try / Except)
 if(task == 10):
     print("You have chosen: Task 10 - Debugging Practice (Print and Try / Except)")
+
+    ## Tip for the user to test this task
+    print("Tip: Enter some numbers, some words")
+
+    ## Function that accepts bad user values, and will inform user what went wrong
+    def sum_numbers():
+
+        ## Ask for user input
+        user_input = input("Enter numbers separated by spaces: ")
+
+        ## Debugging print: Showing exactly what were typed
+        print(f"Raw input: {user_input}")
+
+        ## Splitting input into a list of strings
+        number_strings = user_input.split()
+        print(f"Split input into list: {number_strings}")
+
+        ## Empty list to store valid numbers found
+        numbers = []  
+
+        for num in number_strings:
+            try:
+                ## Try converting to numbers
+                converted = int(num)
+                 ## Store valid numbers
+                numbers.append(converted)
+            except ValueError:
+                print(f"Error: '{num}' is not a valid number and will be skipped.")
+
+        ## Print converted list
+        print(f"Converted numbers: {numbers}")
+
+        ## Check if we have valid numbers before summing
+        if numbers:
+            return sum(numbers)
+        else:
+            return "No valid numbers were entered."
+    ## Showing the total sum of the numbers
+    print(f"Total sum: {sum_numbers()}")
