@@ -316,10 +316,54 @@ if(task == 8):
     except ValueError:
             print("Invalid input! Please enter numbers only.")
 
-
 # Task 9 - File Filtering and Writing
 if(task == 9):
     print("You have chosen: Task 9 - File Filtering and Writing")
+
+    ## Helper to see what one can type
+    print("Hint: You can choose between test and example for this one")
+
+    ## Ask for filename input
+    file_to_locate = input("Write the name of the file to inspect: ").strip()
+
+    ## Allowed file extensions
+    possible_extensions = [".txt", ".csv", ".json", ".pdf"]
+
+    ## Variable to store the correct file path
+    file_to_read = None
+
+    ## Find the existing file with a valid extension
+    for extension in possible_extensions:
+        file_path = file_to_locate + extension
+        if os.path.exists(file_path):
+            file_to_read = file_path
+            ## Stop checking after finding a valid file
+            break 
+
+    ## If no valid file was found
+    if not file_to_read:
+        print("Error: File not found with the allowed extensions!")
+    else:
+        print(f"File found: {file_to_read}")
+
+        ## Ask for the keyword to filter by
+        keyword_to_search_for = input("Next, write a keyword you wish to use (Hint: 'cat' is one that exists): ").strip()
+
+        try:
+            ## Read and filter the file
+            with open(file_to_read, "r", encoding="utf-8") as file:
+                matching_lines = [line for line in file if keyword_to_search_for in line]
+
+            ## Write filtered results to a new file
+            if matching_lines:
+                with open("filtered.txt", "w", encoding="utf-8") as output_file:
+                    output_file.writelines(matching_lines)
+                print(f"Filtered lines saved to 'filtered.txt' ({len(matching_lines)} lines found).")
+            else:
+                print("No lines found containing the keyword.")
+
+        except Exception as error:
+            print(f"Error processing the file: {error}")
 
 # Task 10 - Debugging Practice (Print and Try / Except)
 if(task == 10):

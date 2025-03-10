@@ -1,3 +1,5 @@
 hello!
 Welcome to my example file!
 It is the example of an example!
+I used to own a cat.
+The cat was nice.
