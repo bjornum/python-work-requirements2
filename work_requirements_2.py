@@ -240,6 +240,7 @@ if(task == 6):
 # Task 7 - Scoped Variables Experiment
 if(task == 7):
     print("You have chosen: Task 7 - Scoped Variables Experiment")
+    print("Note: This task makes sense if looking at the code itself.")
 
     epic_variable = "I am declared first, outside any of the scopes! woop!"
 
